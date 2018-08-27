@@ -57,10 +57,10 @@ export default {
 
       formData.append("image", this.image);
       axios
-        .post("http://localhost:3000/upload", formData)
+        .post("http://engahblog-api.helmiyogantara.club/upload", formData)
         .then(result => {
           axios
-            .post("http://localhost:3000/artikel", {
+            .post("http://engahblog-api.helmiyogantara.club/artikel", {
               title: this.title,
               category: this.category,
               content: this.content,

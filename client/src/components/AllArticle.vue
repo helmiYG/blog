@@ -32,7 +32,7 @@ export default {
            return moment(date);
     },
    mounted() {
-    axios.get('http://localhost:3000/artikel')
+    axios.get('http://engahblog-api.helmiyogantara.club/artikel')
         .then((result) => {
         this.articles = result.data.result
         

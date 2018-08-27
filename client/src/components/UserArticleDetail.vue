@@ -67,7 +67,7 @@ export default {
             let idArticle = this.idArticle
             axios({
                     method: 'PUT',
-                    url: `http://localhost:3000/artikel/comments/${idArticle}`,
+                    url: `http://engahblog-api.helmiyogantara.club/artikel/comments/${idArticle}`,
                     headers: {
                         token : this.token
                     }, 
@@ -97,7 +97,7 @@ export default {
                     let token = localStorage.getItem('token')
                     axios({
                         method: 'DELETE',
-                        url: `http://localhost:3000/artikel/${id}`,
+                        url: `http://engahblog-api.helmiyogantara.club/artikel/${id}`,
                         headers: {
                             token: token
                         }
@@ -115,7 +115,7 @@ export default {
         deleteComment(idComment){
             axios({
                 method: "PUT",
-                url: `http://localhost:3000/artikel/comments/${this.idArticle}/delete`,
+                url: `http://engahblog-api.helmiyogantara.club/artikel/comments/${this.idArticle}/delete`,
                 headers: {
                     token: this.token
                 },
@@ -132,7 +132,7 @@ export default {
         },
         getOneArticle(){
             this.idArticle = this.$router.history.current.params.id
-            axios.get(`http://localhost:3000/artikel/detailArticle/${this.idArticle}`)
+            axios.get(`http://engahblog-api.helmiyogantara.club/artikel/detailArticle/${this.idArticle}`)
             .then((result) => {
                 this.article = result.data
             })

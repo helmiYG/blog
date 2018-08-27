@@ -44,7 +44,7 @@ export default {
             let token = localStorage.getItem('token')
             axios({
                 method: 'PUT',
-                url : `http://localhost:3000/artikel/${this.article._id}`,
+                url : `http://engahblog-api.helmiyogantara.club/artikel/${this.article._id}`,
                 headers : {
                     token : token
                 }, 
@@ -70,7 +70,7 @@ export default {
             this.$router.push('/login')
         }
         let id = this.$router.history.current.params.id
-         axios.get(`http://localhost:3000/artikel/detailArticle/${id}`)
+         axios.get(`http://engahblog-api.helmiyogantara.club/artikel/detailArticle/${id}`)
          .then((result) => {
              this.article = result.data
          })

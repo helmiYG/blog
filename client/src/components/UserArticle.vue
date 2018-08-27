@@ -42,7 +42,7 @@ export default {
             let token = localStorage.getItem('token')
             axios({
             method: 'GET',
-            url : 'http://localhost:3000/artikel/userArtikel',
+            url : 'http://engahblog-api.helmiyogantara.club/artikel/userArtikel',
             headers : {
                 token : token
             }

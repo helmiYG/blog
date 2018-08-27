@@ -35,7 +35,7 @@ export default {
   methods: {
     register() {
       axios
-        .post("http://localhost:3000/register", {
+        .post("http://engahblog-api.helmiyogantara.club/register", {
           name: this.name,
           email: this.email,
           password: this.password
