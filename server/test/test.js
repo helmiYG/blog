@@ -13,16 +13,22 @@ describe('Artikel', function () {
         chai.request('http://localhost:3000')
         .post('/artikel')
         .send({
-            title : 'cuma kamu',
+            title : 'cuma mumun',
             category : 'roman',
+            content: 'asdsdasadasdaa',
+            image: 'balabal.ocm',
             userId : '5b7bb9a630685e5d3ee78cd5'
         })
         .end(function(err, res) {
+            console.log(res);
+            
             expect(res).to.have.status(201)
             expect(res.body).to.be.a('object')
             expect(res.body.result).to.have.property('title')
             expect(res.body.result).to.have.property('category')
             expect(res.body.result).to.have.property('userId')
+            expect(res.body.result).to.have.property('image')
+            expect(res.body.result).to.have.property('content')
             done()
         })
     })
@@ -38,12 +44,23 @@ describe('Artikel', function () {
             })
     })
 
+    it('GET /artikel/user/:id get all article by user id, return array', function(done){
+        chai.request('http://localhost:3000')
+        .get('/artikel/user/5b7bb9a630685e5d3ee78cd5')
+        .end(function(err, res) {
+            expect(res).to.have.status(200)
+            expect(res.body.result).to.be.a('array')
+            done()
+        })
+    })
+
     it('PUT /artikel should return object', function(done){
         chai.request('http://localhost:3000')
-        .put('/artikel/5b7ba63c922f5c37fc4b80a3')
+        .put('/artikel/5b7bee842b7dfb19923015d4')
         .send({
             title : 'cuma rindu',
-            category : 'roman'
+            category : 'roman',
+            content : 'axasasadfdfe0',
         })
         .end(function(err, res) {
             expect(res).to.have.status(201)
@@ -69,13 +86,13 @@ describe('Artikel', function () {
 })
 
 
-// register succes
+// // register succes
 describe('User', function () {
 
     // register succes
     it('POST /register shoul return info user registered', function(done){
         chai.request('http://localhost:3000')
-        .post('/regsiter')
+        .post('/register')
         .send({
             name: 'wahyu',
             email : 'wahyu@mail.com',
@@ -119,7 +136,7 @@ describe('User', function () {
             password: '12345'
         })
         .end(function(err, res){
-            console.log(res);
+            
 
             expect(res.body).to.be.a('object')
             expect(res.body.msg).to.equal('email duplicated / value is null')
@@ -204,7 +221,7 @@ describe('User', function () {
         chai.request('http://localhost:3000')
         .delete('/users/5b7bb9a630685e5d3ee78cd5')
         .end(function(err, res){
-            console.log(res);
+           
             expect(res).to.have.status(201)
             expect(res.body).to.be.a('object')
             expect(res.body.result).to.have.property('n')
